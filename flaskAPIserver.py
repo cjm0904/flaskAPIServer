@@ -1,4 +1,4 @@
-from flask import Flask, request as req, jsonify
+from flask import Flask, Request, Response, jsonify
 import json, time, math, random
 
 app = Flask(__name__)
@@ -34,7 +34,9 @@ def iot():
 
                   }
     # data = req.get_json()
-    return json.dumps(sensorData)
+    # return json.dumps(sensorData)
+    res = Response(json.dumps(sensorData), status=200, mimetype='application/json')
+    return res
 
 if __name__ == "__main__":
     app.run()
